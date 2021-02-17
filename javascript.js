@@ -1,3 +1,7 @@
+var startButton = document.querySelector("start");
+var score = document.querySelector("");
+var leaderBoard = document.querySelector("");
+
 var testQuestions = [
     {
         question1: "Who has a song called 'Like You' ",
@@ -40,3 +44,4 @@ var testQuestions = [
         
     }
 ];
+
