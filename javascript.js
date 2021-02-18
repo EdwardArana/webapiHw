@@ -92,86 +92,12 @@ document.body.addEventListener("click", function(e) {
     if(e.target.className === "choices") {
         console.log(e.target.textContent)
         questionIndex++
+        questionDiv.innerHTML = ""
         answersDiv.innerHTML = ""
         getCurrentQuestion()
     }
-})
+});
 
-// function getCurrentQuestion(){
-//     questionDiv.textContent=testQuestions[questionIndex[1]].question
-
-//     var answerOne = document.createElement("button")
-
-//     answerOne.textContent=testQuestions[questionIndex[1]].answers.a
-
-//     var answerTwo = document.createElement("button")
-
-//     answerTwo.textContent=testQuestions[questionIndex[1]].answers.b
-
-//     var answerThree = document.createElement("button")
-
-//     answerThree.textContent=testQuestions[questionIndex[1]].answers.c
-
-//     var answerFour = document.createElement("button")
-
-//     answerFour.textContent=testQuestions[questionIndex[1]].answers.d
-
-//     answersDiv.appendChild(answerOne)
-//     answersDiv.appendChild(answerTwo)
-//     answersDiv.appendChild(answerThree)
-//     answersDiv.appendChild(answerFour)
-// }
-
-
-// function getCurrentQuestion(){
-//     questionDiv.textContent=testQuestions[questionIndex[2]].question
-
-//     var answerOne = document.createElement("button")
-
-//     answerOne.textContent=testQuestions[questionIndex[2]].answers.a
-
-//     var answerTwo = document.createElement("button")
-
-//     answerTwo.textContent=testQuestions[questionIndex[2]].answers.b
-
-//     var answerThree = document.createElement("button")
-
-//     answerThree.textContent=testQuestions[questionIndex[2]].answers.c
-
-//     var answerFour = document.createElement("button")
-
-//     answerFour.textContent=testQuestions[questionIndex[2]].answers.d
-
-//     answersDiv.appendChild(answerOne)
-//     answersDiv.appendChild(answerTwo)
-//     answersDiv.appendChild(answerThree)
-//     answersDiv.appendChild(answerFour)
-// }
-
-// function getCurrentQuestion(){
-//     questionDiv.textContent=testQuestions[questionIndex[3]].question
-
-//     var answerOne = document.createElement("button")
-
-//     answerOne.textContent=testQuestions[questionIndex[3]].answers.a
-
-//     var answerTwo = document.createElement("button")
-
-//     answerTwo.textContent=testQuestions[questionIndex[3]].answers.b
-
-//     var answerThree = document.createElement("button")
-
-//     answerThree.textContent=testQuestions[questionIndex[3]].answers.c
-
-//     var answerFour = document.createElement("button")
-
-//     answerFour.textContent=testQuestions[questionIndex[3]].answers.d
-
-//     answersDiv.appendChild(answerOne)
-//     answersDiv.appendChild(answerTwo)
-//     answersDiv.appendChild(answerThree)
-//     answersDiv.appendChild(answerFour)
-// }
 
 
 //////////////////////// timers vvvvvvvvvvvvvvv ///////////////////
@@ -192,8 +118,6 @@ document.body.addEventListener("click", function(e) {
 // }
 
 
-/////// wills example /////////
-
 // function startTimer() {
 //     var timeInterval = setInterval(function(){
 //         timer.textContent = timeLeft = "seconds left";
@@ -205,3 +129,8 @@ document.body.addEventListener("click", function(e) {
 //         }
 //     },1000);
 // }
+
+
+
+/// if question goes past array display scxore 
+
