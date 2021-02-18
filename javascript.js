@@ -4,6 +4,10 @@ var startButton = document.querySelector("start");
 var questionDiv = document.querySelector("#question");
 var answersDiv = document.querySelector("#answers");
 var questionIndex = 0;
+var timer = document.querySelector("#timer");
+
+
+
 
 var testQuestions = [
     {
@@ -56,44 +60,147 @@ var testQuestions = [
 
 function getCurrentQuestion(){
     questionDiv.textContent=testQuestions[questionIndex].question
+
     var answerOne = document.createElement("button")
+
     answerOne.textContent=testQuestions[questionIndex].answers.a
+
+    var answerTwo = document.createElement("button")
+
+    answerTwo.textContent=testQuestions[questionIndex].answers.b
+
+    var answerThree = document.createElement("button")
+
+    answerThree.textContent=testQuestions[questionIndex].answers.c
+
+    var answerFour = document.createElement("button")
+
+    answerFour.textContent=testQuestions[questionIndex].answers.d
+
+    // var answerTwo = document.getElementById("button");
+    
+    // answerTwo.addEventListener("click");
+
+
+
+
     answersDiv.appendChild(answerOne)
+    answersDiv.appendChild(answerTwo)
+    answersDiv.appendChild(answerThree)
+    answersDiv.appendChild(answerFour)
 }
 
 getCurrentQuestion();
 
 
+// function getCurrentQuestion(){
+//     questionDiv.textContent=testQuestions[questionIndex[1]].question
+
+//     var answerOne = document.createElement("button")
+
+//     answerOne.textContent=testQuestions[questionIndex[1]].answers.a
+
+//     var answerTwo = document.createElement("button")
+
+//     answerTwo.textContent=testQuestions[questionIndex[1]].answers.b
+
+//     var answerThree = document.createElement("button")
+
+//     answerThree.textContent=testQuestions[questionIndex[1]].answers.c
+
+//     var answerFour = document.createElement("button")
+
+//     answerFour.textContent=testQuestions[questionIndex[1]].answers.d
+
+//     answersDiv.appendChild(answerOne)
+//     answersDiv.appendChild(answerTwo)
+//     answersDiv.appendChild(answerThree)
+//     answersDiv.appendChild(answerFour)
+// }
+
+
+// function getCurrentQuestion(){
+//     questionDiv.textContent=testQuestions[questionIndex[2]].question
+
+//     var answerOne = document.createElement("button")
+
+//     answerOne.textContent=testQuestions[questionIndex[2]].answers.a
+
+//     var answerTwo = document.createElement("button")
+
+//     answerTwo.textContent=testQuestions[questionIndex[2]].answers.b
+
+//     var answerThree = document.createElement("button")
+
+//     answerThree.textContent=testQuestions[questionIndex[2]].answers.c
+
+//     var answerFour = document.createElement("button")
+
+//     answerFour.textContent=testQuestions[questionIndex[2]].answers.d
+
+//     answersDiv.appendChild(answerOne)
+//     answersDiv.appendChild(answerTwo)
+//     answersDiv.appendChild(answerThree)
+//     answersDiv.appendChild(answerFour)
+// }
+
+// function getCurrentQuestion(){
+//     questionDiv.textContent=testQuestions[questionIndex[3]].question
+
+//     var answerOne = document.createElement("button")
+
+//     answerOne.textContent=testQuestions[questionIndex[3]].answers.a
+
+//     var answerTwo = document.createElement("button")
+
+//     answerTwo.textContent=testQuestions[questionIndex[3]].answers.b
+
+//     var answerThree = document.createElement("button")
+
+//     answerThree.textContent=testQuestions[questionIndex[3]].answers.c
+
+//     var answerFour = document.createElement("button")
+
+//     answerFour.textContent=testQuestions[questionIndex[3]].answers.d
+
+//     answersDiv.appendChild(answerOne)
+//     answersDiv.appendChild(answerTwo)
+//     answersDiv.appendChild(answerThree)
+//     answersDiv.appendChild(answerFour)
+// }
+
+// user clicks right answer then it will record the score and add points to the score. 
+// need event listener on click record if right or wrong, if it matchs correct answer it will add a point,
+// if the answer is inccorect then you will get no points and move on. 
 // on click event, when i click start the timer starts and it displays the first question. 
 // when the user answers a question we need to do the logic to check if they selected the right answer, and incrament the question index to display the next question.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function startTimer(){
-    var time = 20;
-    var timerElement = document.querySelector(".timer_Text");
+// function startTimer(){
+//     var timerElement = document.querySelector("#timer");
     
-    timerElement.innerHTML="";
-    var timer = setInterval(function(){
-        time --
-        timerElement.textContent=time
-        if (time === 0) {
-            clearInterval(timer);
+//     timerElement.innerHTML="";
+//     var timer = setInterval(function(){
+//         time --
+//         timerElement.textContent=time
+//         if (time === 0) {
+//             clearInterval(timer);
 
-        }
-    }, 1000);
+//         }
+//     }, 1000);
     
-}
+// }
+
+
+
+// function startTimer() {
+//     var timeInterval = setInterval(function(){
+//         timer.textContent = timeLeft = "seconds left";
+//         timeLeft--;
+//         if(timeLeft === 0) {
+//             timer.textContent = "You're out of time lad."
+//             clearInterval(timeInterval);
+//             gameOver();
+//         }
+//     },1000);
+// }
