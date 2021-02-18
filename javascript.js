@@ -169,12 +169,8 @@ getCurrentQuestion();
 //     answersDiv.appendChild(answerFour)
 // }
 
-// user clicks right answer then it will record the score and add points to the score. 
-// need event listener on click record if right or wrong, if it matchs correct answer it will add a point,
-// if the answer is inccorect then you will get no points and move on. 
-// on click event, when i click start the timer starts and it displays the first question. 
-// when the user answers a question we need to do the logic to check if they selected the right answer, and incrament the question index to display the next question.
 
+//////////////////////// timers vvvvvvvvvvvvvvv ///////////////////
 
 // function startTimer(){
 //     var timerElement = document.querySelector("#timer");
@@ -192,6 +188,7 @@ getCurrentQuestion();
 // }
 
 
+/////// wills example /////////
 
 // function startTimer() {
 //     var timeInterval = setInterval(function(){
