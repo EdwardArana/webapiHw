@@ -64,25 +64,21 @@ function getCurrentQuestion(){
     var answerOne = document.createElement("button")
 
     answerOne.textContent=testQuestions[questionIndex].answers.a
+    answerOne.setAttribute("class", "choices")
 
     var answerTwo = document.createElement("button")
 
     answerTwo.textContent=testQuestions[questionIndex].answers.b
-
+    answerTwo.setAttribute("class", "choices")
     var answerThree = document.createElement("button")
 
     answerThree.textContent=testQuestions[questionIndex].answers.c
-
+    answerThree.setAttribute("class", "choices")
     var answerFour = document.createElement("button")
 
     answerFour.textContent=testQuestions[questionIndex].answers.d
-
-    // var answerTwo = document.getElementById("button");
+    answerFour.setAttribute("class", "choices")
     
-    // answerTwo.addEventListener("click");
-
-
-
 
     answersDiv.appendChild(answerOne)
     answersDiv.appendChild(answerTwo)
@@ -92,6 +88,14 @@ function getCurrentQuestion(){
 
 getCurrentQuestion();
 
+document.body.addEventListener("click", function(e) {
+    if(e.target.className === "choices") {
+        console.log(e.target.textContent)
+        questionIndex++
+        answersDiv.innerHTML = ""
+        getCurrentQuestion()
+    }
+})
 
 // function getCurrentQuestion(){
 //     questionDiv.textContent=testQuestions[questionIndex[1]].question
