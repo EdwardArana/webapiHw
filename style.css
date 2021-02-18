@@ -22,3 +22,8 @@ body{
     flex-direction: column;
     padding: 10px;
 }
+
+#quiz,#myform{
+    display: none;
+    
+}

@@ -1,12 +1,13 @@
-var startButton = document.querySelector("start");
+var startButton = document.querySelector("#start");
 // var score = document.querySelector("");
-// var leaderBoard = document.querySelector("");
+var highScores = []
 var questionDiv = document.querySelector("#question");
 var answersDiv = document.querySelector("#answers");
 var questionIndex = 0;
 var timer = document.querySelector("#timer");
-
-
+var submitButton = document.querySelector("#submit");
+var input = document.querySelector("#intials");
+var time = 20;
 
 
 var testQuestions = [
@@ -91,6 +92,13 @@ getCurrentQuestion();
 document.body.addEventListener("click", function(e) {
     if(e.target.className === "choices") {
         console.log(e.target.textContent)
+        if(e.target.textContent===testQuestions[questionIndex].correctAnswer){
+            alert("correct")
+            handleWin()
+        } else {
+            time = time -10
+            alert("wrong")
+        }
         questionIndex++
         questionDiv.innerHTML = ""
         answersDiv.innerHTML = ""
@@ -98,39 +106,50 @@ document.body.addEventListener("click", function(e) {
     }
 });
 
+function handleWin(){
 
 
-//////////////////////// timers vvvvvvvvvvvvvvv ///////////////////
 
-// function startTimer(){
-//     var timerElement = document.querySelector("#timer");
+
+}
+
+submitButton.addEventListener("click", function(e){
+    e.preventDefault();
+    var intials = input.value;
+    console.log(intials);
+    var userScore = {
+        user:intials,
+        score:time
+    }
+    highScores.push(userScore);
+    localStorage.setItem("highscore", JSON.stringify(highScores))
+
+}
+)
+
+
+startButton.addEventListener("click", function(e){
+    e.preventDefault();
+    document.querySelector("#quiz").setAttribute("style", "display:block");
+    startTimer();
+})
+
+
+
+function startTimer(){
     
-//     timerElement.innerHTML="";
-//     var timer = setInterval(function(){
-//         time --
-//         timerElement.textContent=time
-//         if (time === 0) {
-//             clearInterval(timer);
+    var timerElement = document.querySelector("#timer");
+    timerElement.innerHTML="";
+   
+    var timer = setInterval(function(){
+        time --
+        timerElement.textContent=time
+        if (time === 0 || time < 0 ) {
+            clearInterval(timer);
+            document.querySelector("#myform").setAttribute("style", "display:block");
 
-//         }
-//     }, 1000);
+        }
+    }, 1000);
     
-// }
-
-
-// function startTimer() {
-//     var timeInterval = setInterval(function(){
-//         timer.textContent = timeLeft = "seconds left";
-//         timeLeft--;
-//         if(timeLeft === 0) {
-//             timer.textContent = "You're out of time lad."
-//             clearInterval(timeInterval);
-//             gameOver();
-//         }
-//     },1000);
-// }
-
-
-
-/// if question goes past array display scxore 
+}
 
