@@ -57,7 +57,7 @@ var testQuestions = [
 ];
 
 
-
+// This function gets the currernt question and when you submit an answer it will move you to the next question.
 
 function getCurrentQuestion(){
     if(testQuestions[questionIndex]) {
@@ -90,7 +90,7 @@ function getCurrentQuestion(){
 }
 
 getCurrentQuestion();
-
+//// This event listener is for the answer button and when you click on it the button will show a prompt telling you if you got it correct or wrong.
 document.body.addEventListener("click", function(e) {
     if(e.target.className === "choices") {
         console.log(e.target.textContent)
@@ -117,7 +117,7 @@ document.body.addEventListener("click", function(e) {
     
 });
 
-
+// This event listener is for the highscore submit button, it checks if there is a high score already and if there is it will display it. If there isnt a high score already then it will set it to 0.
 submitButton.addEventListener("click", function(e){
     e.preventDefault();
     var intials = input.value;
