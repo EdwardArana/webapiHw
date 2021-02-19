@@ -1,13 +1,13 @@
 var startButton = document.querySelector("#start");
-// var score = document.querySelector("");
-var highScores = []
+var score = 0
+var highScores = 0
 var questionDiv = document.querySelector("#question");
 var answersDiv = document.querySelector("#answers");
 var questionIndex = 0;
 var timer = document.querySelector("#timer");
 var submitButton = document.querySelector("#submit");
 var input = document.querySelector("#intials");
-var time = 20;
+var time = 60;
 
 
 var testQuestions = [
@@ -60,31 +60,33 @@ var testQuestions = [
 
 
 function getCurrentQuestion(){
+    if(testQuestions[questionIndex]) {
     questionDiv.textContent=testQuestions[questionIndex].question
 
-    var answerOne = document.createElement("button")
+        var answerOne = document.createElement("button")
 
-    answerOne.textContent=testQuestions[questionIndex].answers.a
-    answerOne.setAttribute("class", "choices")
+        answerOne.textContent=testQuestions[questionIndex].answers.a
+        answerOne.setAttribute("class", "choices")
 
-    var answerTwo = document.createElement("button")
+        var answerTwo = document.createElement("button")
 
-    answerTwo.textContent=testQuestions[questionIndex].answers.b
-    answerTwo.setAttribute("class", "choices")
-    var answerThree = document.createElement("button")
+        answerTwo.textContent=testQuestions[questionIndex].answers.b
+        answerTwo.setAttribute("class", "choices")
+        var answerThree = document.createElement("button")
 
-    answerThree.textContent=testQuestions[questionIndex].answers.c
-    answerThree.setAttribute("class", "choices")
-    var answerFour = document.createElement("button")
+        answerThree.textContent=testQuestions[questionIndex].answers.c
+        answerThree.setAttribute("class", "choices")
+        var answerFour = document.createElement("button")
 
-    answerFour.textContent=testQuestions[questionIndex].answers.d
-    answerFour.setAttribute("class", "choices")
-    
+        answerFour.textContent=testQuestions[questionIndex].answers.d
+        answerFour.setAttribute("class", "choices")
+        
 
-    answersDiv.appendChild(answerOne)
-    answersDiv.appendChild(answerTwo)
-    answersDiv.appendChild(answerThree)
-    answersDiv.appendChild(answerFour)
+        answersDiv.appendChild(answerOne)
+        answersDiv.appendChild(answerTwo)
+        answersDiv.appendChild(answerThree)
+        answersDiv.appendChild(answerFour)
+    }
 }
 
 getCurrentQuestion();
@@ -94,24 +96,27 @@ document.body.addEventListener("click", function(e) {
         console.log(e.target.textContent)
         if(e.target.textContent===testQuestions[questionIndex].correctAnswer){
             alert("correct")
-            handleWin()
         } else {
             time = time -10
             alert("wrong")
         }
+        console.log(testQuestions)
+        
         questionIndex++
         questionDiv.innerHTML = ""
         answersDiv.innerHTML = ""
+       
         getCurrentQuestion()
+        
+        if(questionIndex === 4) {
+            document.querySelector("#myform").setAttribute("style", "display:block");
+            score = time
+            time = 0
+        }
     }
+    
 });
 
-function handleWin(){
-
-
-
-
-}
 
 submitButton.addEventListener("click", function(e){
     e.preventDefault();
@@ -119,13 +124,31 @@ submitButton.addEventListener("click", function(e){
     console.log(intials);
     var userScore = {
         user:intials,
-        score:time
+        score:score
     }
-    highScores.push(userScore);
-    localStorage.setItem("highscore", JSON.stringify(highScores))
+    var prevScore = localStorage.getItem("highscore")
+    
+    console.log(prevScore); 
+    
+    if(prevScore && prevScore < score){
 
-}
-)
+        localStorage.setItem("highscore", JSON.stringify(userScore))
+    
+        
+    } else if(!prevScore) {
+
+        localStorage.setItem("highscore", JSON.stringify(userScore))
+    }
+    
+    if(questionIndex === 3) {
+        document.querySelector("#myform").setAttribute("style", "display:block");
+
+    
+    }
+
+});
+
+
 
 
 startButton.addEventListener("click", function(e){
@@ -142,7 +165,10 @@ function startTimer(){
     timerElement.innerHTML="";
    
     var timer = setInterval(function(){
-        time --
+        if(time !== 0) {
+            time --
+        }
+        
         timerElement.textContent=time
         if (time === 0 || time < 0 ) {
             clearInterval(timer);
@@ -151,5 +177,5 @@ function startTimer(){
         }
     }, 1000);
     
-}
+} 
 
