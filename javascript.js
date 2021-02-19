@@ -7,9 +7,9 @@ var questionIndex = 0;
 var timer = document.querySelector("#timer");
 var submitButton = document.querySelector("#submit");
 var input = document.querySelector("#intials");
-var time = 60;
-
-
+var time = 120;
+var displayResults = document.getElementById("#display")
+// Where my questions and answers get picked from
 var testQuestions = [
     {
         question: "Who has a song called 'Like You' ",
@@ -140,7 +140,7 @@ submitButton.addEventListener("click", function(e){
         localStorage.setItem("highscore", JSON.stringify(userScore))
     }
     
-    if(questionIndex === 3) {
+    if(questionIndex === 4) {
         document.querySelector("#myform").setAttribute("style", "display:block");
 
     
