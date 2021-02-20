@@ -9,6 +9,7 @@ var submitButton = document.querySelector("#submit");
 var input = document.querySelector("#intials");
 var time = 120;
 var displayResults = document.getElementById("#display")
+var timerInterval;
 // Where my questions and answers get picked from
 var testQuestions = [
     {
@@ -111,7 +112,7 @@ document.body.addEventListener("click", function(e) {
         if(questionIndex === 4) {
             document.querySelector("#myform").setAttribute("style", "display:block");
             score = time
-            time = 0
+            clearInterval(timerInterval)
         }
     }
     
@@ -126,19 +127,21 @@ submitButton.addEventListener("click", function(e){
         user:intials,
         score:score
     }
-    var prevScore = localStorage.getItem("highscore")
+    var prevScore = JSON.parse(localStorage.getItem("highscore"))
     
-    console.log(prevScore); 
+    // console.log(typeof prevScore.score); 
+    // console.log(typeof score);
+    if(!prevScore) {
+
+        localStorage.setItem("highscore", JSON.stringify(userScore))
+    }
     
-    if(prevScore && prevScore < score){
+    else if(parseInt (prevScore.score) < score){
 
         localStorage.setItem("highscore", JSON.stringify(userScore))
     
         
-    } else if(!prevScore) {
-
-        localStorage.setItem("highscore", JSON.stringify(userScore))
-    }
+    } 
     
     if(questionIndex === 4) {
         document.querySelector("#myform").setAttribute("style", "display:block");
@@ -149,7 +152,7 @@ submitButton.addEventListener("click", function(e){
 });
 
 
-
+// this button starts the timer and test.
 
 startButton.addEventListener("click", function(e){
     e.preventDefault();
@@ -158,20 +161,21 @@ startButton.addEventListener("click", function(e){
 })
 
 
+//this is how i start and stop the timer once the test is over.
 
 function startTimer(){
     
     var timerElement = document.querySelector("#timer");
     timerElement.innerHTML="";
-   
-    var timer = setInterval(function(){
+    
+     timerInterval = setInterval(function(){
         if(time !== 0) {
             time --
         }
         
         timerElement.textContent=time
         if (time === 0 || time < 0 ) {
-            clearInterval(timer);
+            clearInterval(timerInterval);
             document.querySelector("#myform").setAttribute("style", "display:block");
 
         }
